@@ -36,3 +36,18 @@ print("Logistic Regression Accuracy:", accuracy_score(y_test, lr_preds))
 print("Decision Tree Accuracy:", accuracy_score(y_test, dt_preds))
 print("\nClassification Report for Logistic Regression:\n", classification_report(y_test, lr_preds))
 print("Confusion Matrix:\n", confusion_matrix(y_test, lr_preds))
+
+# Predict for a new student
+new_student = pd.DataFrame({
+    'StudyHours': [4],
+    'Attendance': [50],
+    'PreviousScore': [80]
+})
+
+# Make predictions using both models
+lr_prediction = lr_model.predict(new_student)
+dt_prediction = dt_model.predict(new_student)
+
+print("\nPrediction for new student:")
+print("Logistic Regression Prediction:", "Pass" if lr_prediction[0] == 1 else "Fail")
+print("Decision Tree Prediction:", "Pass" if dt_prediction[0] == 1 else "Fail")
